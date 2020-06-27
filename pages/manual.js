@@ -1,12 +1,11 @@
 import Head from 'next/head'
-import ListProducts from '../components/ListProducts'
 import Header from '../components/Header'
 import HomeContainer from '../components/HomeContainer'
-export default function Home() {
+export default function Manual() {
   return (
     <div className="container">
       <Head>
-        <title>Create Next App</title>
+        <title>Manual</title>
         <link rel="icon" href="/favicon.ico" />
         <link rel='stylesheet' href='/style.css' />
         <meta name='theme-color' content="#0176d5" />
@@ -15,8 +14,7 @@ export default function Home() {
 
       <main>
         <HomeContainer>
-       <ListProducts/>
-
+            <button onClick={() => alert('Aun no esta listo :(')}>Descargar Manual</button>
         </HomeContainer>
       </main>
 
