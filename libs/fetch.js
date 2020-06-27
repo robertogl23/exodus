@@ -1,4 +1,4 @@
-const url = "https://exodus-apiv1.herokuapp.com/";
+const url = "https://exodus-apiv1.herokuapp.com";
 const headers = {
   "Content-Type": "application/json",
 };
