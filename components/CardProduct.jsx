@@ -16,11 +16,11 @@ const LayoutCard = styled.div`
 `;
 const Img = styled.img`
   height: 100%;
-  width: 260px;
+  width: 100%;
   box-sizing: border-box;
 `;
 const LayoutImg = styled.div`
-
+padding:1em;
   display: flex;
   justify-content: center;
   box-sizing: border-box;
