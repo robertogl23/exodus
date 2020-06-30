@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import ButtonAddCart from "./ButtonAddCart";
+import { AppContext } from "../context/AppContext";
 const LayoutCar = styled.div`
   border: 1px solid #dedede;
   height: 100%;
@@ -60,72 +61,54 @@ const LayoutInfo = styled.div`
   font-size: 12px;
 `;
 const LayoutPrice = styled.div`
-box-sizing: border-box;
-box-sizing: content-box;
-margin-left: 11.5em;
-margin-top: -94.5px;
-height: 100%;
-display:flex;
-justify-content:center;
-align-items:center;
-`
+  box-sizing: border-box;
+  box-sizing: content-box;
+  margin-left: 11.5em;
+  margin-top: -94.5px;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+`;
 const LayoutButtons = styled.div`
-
-display:flex;
-justify-content:space-around;
-height: 4em;
-padding: 6px;
-    box-sizing: border-box;
-   align-items:center;
-`
+  display: flex;
+  justify-content: space-around;
+  height: 4em;
+  padding: 6px;
+  box-sizing: border-box;
+  align-items: center;
+`;
 export default function CartLayout() {
   return (
     <LayoutCar>
       <LayoutTitleCart>Carrito de Compras</LayoutTitleCart>
       <LayoutItemsCart>
-        <LayoutItemCart>
-          <LayoutImage>
-            <Image src="https://res.cloudinary.com/walmart-labs/image/upload/w_225,dpr_auto,f_auto,q_auto:good/mg/gm/3pp/asr/8c5df9cc-7350-44cc-8c40-f99ec6d3b8d9.ff43c2f54b399e08f67683aeef3aec7a.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff" />
-          </LayoutImage>
-          <LayoutDescripcions>
-            <LayoutInfo>
-              <p>
-                Laptop Gamer DELL G7 7790 17 Nvidia GeForce Rtx 2060 Core I5
-              </p>
-              <p>dell</p>
-            </LayoutInfo>
-            <LayoutPrice>
-              <p>$133</p>
-            </LayoutPrice>
-          </LayoutDescripcions>
-          <LayoutButtons>
-              <ButtonAddCart/>
-               <div style={{width:15}}></div>
-              <ButtonAddCart/>
-          </LayoutButtons>
-        </LayoutItemCart>
-        <LayoutItemCart>
-          <LayoutImage>
-            <Image src="https://res.cloudinary.com/walmart-labs/image/upload/w_225,dpr_auto,f_auto,q_auto:good/mg/gm/3pp/asr/8c5df9cc-7350-44cc-8c40-f99ec6d3b8d9.ff43c2f54b399e08f67683aeef3aec7a.jpeg?odnHeight=2000&odnWidth=2000&odnBg=ffffff" />
-          </LayoutImage>
-          <LayoutDescripcions>
-            <LayoutInfo>
-              <p>
-                Laptop Gamer DELL G7 7790 17 Nvidia GeForce Rtx 2060 Core I5
-              </p>
-              <p>dell</p>
-            </LayoutInfo>
-            <LayoutPrice>
-              <p>$133</p>
-            </LayoutPrice>
-          </LayoutDescripcions>
-          <LayoutButtons>
-              <ButtonAddCart/>
-               <div style={{width:15}}></div>
-              <ButtonAddCart/>
-          </LayoutButtons>
-        </LayoutItemCart>
-        
+        <AppContext.Consumer>
+          {(context) => {
+            const { cart } = context;
+            return cart.map((e, i) => (
+              <LayoutItemCart key={i}>
+                <LayoutImage>
+                  <Image src={e.urlImagenes[0]} />
+                </LayoutImage>
+                <LayoutDescripcions>
+                  <LayoutInfo>
+                    <p>{e.nombreProducto}</p>
+                    <p>{e.proveedor.nombreProveedor}</p>
+                  </LayoutInfo>
+                  <LayoutPrice>
+                    <p>${e.pricio}.00</p>
+                  </LayoutPrice>
+                </LayoutDescripcions>
+                <LayoutButtons>
+                  <ButtonAddCart id={e._id} product={e}/>
+                  <div style={{ width: 15 }}></div>
+                  <ButtonAddCart />
+                </LayoutButtons>
+              </LayoutItemCart>
+            ));
+          }}
+        </AppContext.Consumer>
       </LayoutItemsCart>
     </LayoutCar>
   );

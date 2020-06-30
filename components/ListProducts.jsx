@@ -1,6 +1,7 @@
 import React from "react";
 import { AppContext } from "../context/AppContext";
 import CardProduct from "./CardProduct";
+import List from "./List";
 import styled from "styled-components";
 const LayoutListProducts = styled.div`
   display: grid;
@@ -24,25 +25,12 @@ const LayoutListProducts = styled.div`
 `;
 export default function ListProducts() {
   return (
-    <LayoutListProducts>
       <AppContext.Consumer>
         {(context) => {
           const { products } = context;
-          return products.length ? (
-            products.map((e, i) => <CardProduct key={i} product={e} />)
-          ) : (
-            <h1>Cargando Datos</h1>
-          );
+          return <List products={products}/>
         }}
       </AppContext.Consumer>
-      <CardProduct product={[]} />
-      <CardProduct product={[]} />
-      <CardProduct product={[]} />
-      <CardProduct product={[]} />
-      <CardProduct product={[]} />
-      <CardProduct product={[]} />
-      <CardProduct product={[]} />
-      <CardProduct product={[]} />
-    </LayoutListProducts>
+
   );
 }

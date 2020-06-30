@@ -3,6 +3,7 @@ import ListProducts from "../components/ListProducts";
 import Header from "../components/Header";
 import HomeContainer from "../components/HomeContainer";
 import CartLayout from "../components/CartLayout";
+import FilterContainer from "../components/FilterContainer";
 export default function Home() {
   return (
     <div className="container">
