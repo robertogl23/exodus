@@ -55,7 +55,7 @@ export default function List({ products }) {
           products.filter((e) => e.proveedor.nombreProveedor === "Lenovo")
         );
         break;
-      case "DEFAULT":
+      case "all":
         setFilter(products);
 
         break;
@@ -64,19 +64,16 @@ export default function List({ products }) {
         break;
     }
   };
-  useEffect(() => {
-    setFilter(products);
-  }, []);
+
   return (
     <>
       <LayoutFilter>
         <select
           name="filter"
-          defaultValue={"DEFAULT"}
           onChange={handleSubmit(onSubmit)}
           ref={register}
         >
-          <option value="DEFAULT">Filtrar marca</option>
+          <option value="all">Filtrar marca</option>
           <option value="Apple">Apple</option>
           <option value="Lenovo">Lenovo</option>
           <option value="HP">HP</option>
