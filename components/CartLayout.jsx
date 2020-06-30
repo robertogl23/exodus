@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ButtonAddCart from "./ButtonAddCart";
 import { AppContext } from "../context/AppContext";
+import ButtonRemove from "./ButtonRemove";
 const LayoutCar = styled.div`
   border: 1px solid #dedede;
   height: 100%;
@@ -78,6 +79,19 @@ const LayoutButtons = styled.div`
   box-sizing: border-box;
   align-items: center;
 `;
+const LayoutEmpyti = styled.div`
+  display: flex;
+  justify-content: center;
+  height: 100%;
+  box-sizing: border-box;
+  align-items: center;
+`;
+const LayoutFooter = styled.div`
+  display: flex;
+  justify-content: center;
+  box-sizing: border-box;
+  align-items: center;
+`;
 export default function CartLayout() {
   return (
     <LayoutCar>
@@ -86,30 +100,44 @@ export default function CartLayout() {
         <AppContext.Consumer>
           {(context) => {
             const { cart } = context;
-            return cart.map((e, i) => (
-              <LayoutItemCart key={i}>
-                <LayoutImage>
-                  <Image src={e.urlImagenes[0]} />
-                </LayoutImage>
-                <LayoutDescripcions>
-                  <LayoutInfo>
-                    <p>{e.nombreProducto}</p>
-                    <p>{e.proveedor.nombreProveedor}</p>
-                  </LayoutInfo>
-                  <LayoutPrice>
-                    <p>${e.pricio}.00</p>
-                  </LayoutPrice>
-                </LayoutDescripcions>
-                <LayoutButtons>
-                  <ButtonAddCart id={e._id} product={e}/>
-                  <div style={{ width: 15 }}></div>
-                  <ButtonAddCart />
-                </LayoutButtons>
-              </LayoutItemCart>
-            ));
+            return cart.length ? (
+              cart.map((e, i) => (
+                <LayoutItemCart key={i}>
+                  <LayoutImage>
+                    <Image src={e.urlImagenes[0]} />
+                  </LayoutImage>
+                  <LayoutDescripcions>
+                    <LayoutInfo>
+                      <p>{e.nombreProducto}</p>
+                      <p>{e.proveedor.nombreProveedor}</p>
+                    </LayoutInfo>
+                    <LayoutPrice>
+                      <p>${e.pricio}.00</p>
+                    </LayoutPrice>
+                  </LayoutDescripcions>
+                  <LayoutButtons>
+                    <ButtonAddCart id={e._id} product={e} />
+                    <div style={{ width: 15 }}></div>
+                    <ButtonRemove product={e} />
+                  </LayoutButtons>
+                </LayoutItemCart>
+              ))
+            ) : (
+              <LayoutEmpyti>
+                <h1>Carrito vacio</h1>
+              </LayoutEmpyti>
+            );
           }}
         </AppContext.Consumer>
       </LayoutItemsCart>
+      <LayoutFooter>
+        <AppContext.Consumer>
+          {(context) => {
+            const { total } = context;
+            return <h3>Total: {total}</h3>;
+          }}
+        </AppContext.Consumer>
+      </LayoutFooter>
     </LayoutCar>
   );
 }

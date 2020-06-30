@@ -7,10 +7,39 @@ export class AppContextProvider extends Component {
 		cart: [],
 		ids: [],
 		total: 0,
+		filterProduct:[]
 	};
+	getFilterProducts = (filter) => {
+		switch (filter) {
+			case 'Hp':
+				return this.state.products.filter(e => e.proveedor.nombreProveedor === 'HP')
+			case 'Apple':
+				return this.state.products.filter(e => e.proveedor.nombreProveedor === 'Apple')
+			case 'Lenovo':
+				return this.state.products.filter(e => e.proveedor.nombreProveedor === 'Lenovo')
+			
+			case 'all':
+				return this.state.products
+			
+			default:
+				break;
+		}
+	}
 	getQuantityById = (id) => {
 		return this.state.ids[id] || 0;
 	};
+	deleteProduct = (id,price) => {
+		const {total } = this.state;
+		const cantidad = price * this.getQuantityById(id)
+		const resta = total - cantidad
+		const indexProduct = this.state.cart.findIndex((a) => a._id === id);
+		this.setState({
+			total: resta,
+			ids:{...this.state.ids,[id]:0},
+			cart: this.state.cart.filter((e, i) => i !== indexProduct)
+		 });
+
+	}
 	removeProduct = (id,price) => {
 		const {total } = this.state;
 		const idDecrement = this.state.ids[id] - 1;
@@ -66,6 +95,8 @@ export class AppContextProvider extends Component {
 					addToCart: this.addToCart,
 					getQuantityById: this.getQuantityById,
 					removeProduct: this.removeProduct,
+					getFilterProducts:this.getFilterProducts,
+					deleteProduct:this.deleteProduct
 				}}
 			>
 				{this.props.children}

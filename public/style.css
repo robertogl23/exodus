@@ -3,6 +3,7 @@
 
 :root{
     --headerColor: #0176d5;
+    --bodyColor: #0e0e10;
 }
 
 body{
@@ -10,10 +11,12 @@ body{
     box-sizing: border-box;
     font-family: 'Nanum Gothic', sans-serif;
 }
+
 select{
-    border: none;
-    height: 20px;
-    width: 100px;
+    border: 1px solid #dedede ;
+    height: 30px;
+    width: 130px;
+    font-size: 18px;
 
 }
 option{
@@ -21,9 +24,4 @@ option{
 }
 a{
     text-decoration: none;
-}
-@media (prefers-color-scheme: dark){
-    :root{
-        --headerColor: #202020;
-    }
 }

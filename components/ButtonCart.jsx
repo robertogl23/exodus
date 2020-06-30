@@ -2,6 +2,8 @@ import React from "react";
 import { AppContext } from "../context/AppContext";
 import styled from "styled-components";
 import CartSvg from "./CartSvg";
+import Link from "next/link";
+
 const LayoutButtoCart = styled.div`
   border: 1px solid #fff;
   width: 100%;
@@ -37,6 +39,9 @@ const DisplayTotal = styled.span`
 `;
 export default function ButtonCart() {
   return (
+    <Link href="/carrito">
+    <a>
+
     <LayoutButtoCart>
       <AppContext.Consumer>
         {(context) => {
@@ -54,5 +59,7 @@ export default function ButtonCart() {
         }}
       </AppContext.Consumer>
     </LayoutButtoCart>
+    </a>
+    </Link>
   );
 }

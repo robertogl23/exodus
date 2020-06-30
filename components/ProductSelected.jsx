@@ -10,13 +10,17 @@ const LayoutSelect = styled.div`
   box-sizing: border-box;
   display: grid;
   padding-right: 25em;
-  grid-template-columns: 15% 35% 50%;
+  grid-template-columns: 25% 40% 35%;
+  grid-gap:20px;
   @media (max-width: 967px) {
     padding: 0;
+    width: 100%;
+    grid-template-columns: 20% 35% 45%;
   }
 `;
 const ImageContainer = styled.div`
   box-sizing: border-box;
+
   width: 100%;
   height: 450px;
   display: flex;
@@ -27,7 +31,7 @@ const ImageContainer = styled.div`
 const LayoutDescription = styled.div`
   box-sizing: border-box;
 
-  width: 100%;
+  width: 400px;
   height: 450px;
 `;
 const Imagen = styled.img`
@@ -48,6 +52,7 @@ const OpcionDes = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor:pointer;
 `;
 const OpcionCara = styled.div`
   ${(props) => !props.select && "border-bottom: 2px solid blue;"}
@@ -57,6 +62,8 @@ const OpcionCara = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
+  cursor:pointer;
+
 `;
 export default function ProductSelected({ product }) {
   const [imagenes, setImagenes] = useState(product[0].urlImagenes[0]);
@@ -85,7 +92,7 @@ export default function ProductSelected({ product }) {
             ${product[0].pricio}.00
           </h4>
           <div style={{ width: 300 }}>
-            <ButtonAddCart />
+            <ButtonAddCart id={product[0]._id} product={product[0]} />
           </div>
         </LayoutDescription>
       </LayoutSelect>

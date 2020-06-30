@@ -27,7 +27,8 @@ export default function ListProducts() {
   return (
       <AppContext.Consumer>
         {(context) => {
-          const { products } = context;
+          const { products,getFilterProducts } = context;
+          console.log(getFilterProducts('Hp'))
           return <List products={products}/>
         }}
       </AppContext.Consumer>

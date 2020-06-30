@@ -10,12 +10,13 @@ const LayoutListImagenes = styled.div`
   padding-top: 80px;
 `;
 const LayoutImage = styled.div`
-  width: 80px;
-  height: 80px;
+  width: 100px;
+  height: 100px;
+  cursor:pointer;
 `;
 const Imagen = styled.img`
-width: 100%;
-height: 100%;
+width: 90%;
+height: 90%;
 `
 export default function ListImages({ urls,handleSelectImagen }) {
   return (

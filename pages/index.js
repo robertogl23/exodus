@@ -5,6 +5,7 @@ import HomeContainer from "../components/HomeContainer";
 import CartLayout from "../components/CartLayout";
 import FilterContainer from "../components/FilterContainer";
 export default function Home() {
+  
   return (
     <div className="container">
       <Head>
@@ -13,9 +14,9 @@ export default function Home() {
         <link rel="stylesheet" href="/style.css" />
         <meta name="theme-color" content="#0176d5" />
       </Head>
-      <Header />
 
       <main>
+        <Header  />
         <HomeContainer>
           <ListProducts />
         </HomeContainer>

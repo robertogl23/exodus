@@ -2,6 +2,7 @@ import React from "react";
 import styled from "styled-components";
 import ButtonCart from "./ButtonCart";
 import Link from "next/link";
+import ToggleTheme from "./ToggleTheme";
 
 const LayoutHeader = styled.header`
   box-sizing: border-box;
@@ -18,22 +19,24 @@ const LayoutHeader = styled.header`
   }
 `;
 const TitleExodus = styled.p`
-  color:#fff;
-  font-size:21px;
-  display:under-line;
-`
+  color: #fff;
+  font-size: 21px;
+  display: under-line;
+`;
 export default function Header() {
+ 
   return (
     <LayoutHeader>
       <div>
         <Link href="/">
           <a>
             <TitleExodus>Exodus</TitleExodus>
-
           </a>
         </Link>
       </div>
-      <div></div>
+
+      <div ></div>
+
       <div>
         <ButtonCart />
       </div>

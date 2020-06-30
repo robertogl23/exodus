@@ -16,7 +16,7 @@ const LayoutCard = styled.div`
   }
 `;
 const Img = styled.img`
-  width: 60%;
+  width: 100%;
   margin: auto;
   display: block;
 `;
@@ -25,6 +25,7 @@ const LayoutImg = styled.div`
   display: flex;
   justify-content: center;
   box-sizing: border-box;
+  cursor: pointer;
 `;
 const LayoutButtonCard = styled.div`
   display: flex;
@@ -36,9 +37,10 @@ const TitleDisplay = styled.p`
   margin-left: 1em;
   margin-right: 1em;
   margin-top: -0.4px;
+  cursor:pointer;
 `;
 const NameProvider = styled.div`
-  color: red;
+  color: var(--headerColor);
   margin-left: 1em;
   margin-top: -18px;
   display: inherit;
@@ -46,6 +48,7 @@ const NameProvider = styled.div`
 `;
 const LayoutDescription = styled.div`
   padding-top: 9px;
+  
 `;
 const PriceDisplay = styled.p`
   margin-top: -0.1em;
@@ -55,18 +58,26 @@ const PriceDisplay = styled.p`
   display: inherit;
   padding-top: inherit;
 `;
+const ImDisplay = styled.a`
+padding: 0;
+    margin: auto;
+`;
 
 export default function CardProduct({ product }) {
   return (
     <LayoutCard>
       <LayoutImg>
-        <Img src={product.urlImagenes[0]} />
+        <Link href="[id]" as={`${product.urlSeo}`}>
+          <a>
+            <Img src={product.urlImagenes[0]} />
+          </a>
+        </Link>
       </LayoutImg>
       <LayoutDescription>
         <Link href="[id]" as={`${product.urlSeo}`}>
-          <a>
+          <ImDisplay>
             <TitleDisplay>{product.nombreProducto}</TitleDisplay>
-          </a>
+          </ImDisplay>
         </Link>
         <NameProvider>
           <a>{product.proveedor.nombreProveedor}</a>

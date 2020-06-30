@@ -13,7 +13,7 @@ const LayoutListProducts = styled.div`
   width: 85%;
   height: 80%;
   overflow-y: auto;
-  margin-top:78px;
+  margin-top: 78px;
 
   @media (max-width: 1637px) {
     grid-template-columns: repeat(3, 1fr);
@@ -31,58 +31,44 @@ const LayoutFilter = styled.div`
   height: 50px;
   display: flex;
   align-items: center;
-  top:0;
-  left:0;
-  margin-top:56px;
-  padding-left:15px;
+  top: 0;
+  left: 0;
+  margin-top: 60px;
+  padding-left: 15px;
+  font-size:18px;
 `;
 export default function List({ products }) {
   const { register, handleSubmit } = useForm();
-  const [filter, setFilter] = useState(products);
+  const [filter, setFilter] = useState("all");
   const onSubmit = (data) => {
+    setFilter(data.filter)
     console.log(data);
-    switch (data.filter) {
-      case "HP":
-        setFilter(products.filter((e) => e.proveedor.nombreProveedor === "HP"));
-        break;
-      case "Apple":
-        setFilter(
-          products.filter((e) => e.proveedor.nombreProveedor === "Apple")
-        );
-        break;
-      case "Lenovo":
-        setFilter(
-          products.filter((e) => e.proveedor.nombreProveedor === "Lenovo")
-        );
-        break;
-      case "all":
-        setFilter(products);
-
-        break;
-      default:
-        setFilter(products);
-        break;
-    }
   };
 
   return (
     <>
       <LayoutFilter>
-        <select
-          name="filter"
-          onChange={handleSubmit(onSubmit)}
-          ref={register}
-        >
+        <select name="filter" onChange={handleSubmit(onSubmit)} ref={register}>
           <option value="all">Filtrar marca</option>
           <option value="Apple">Apple</option>
           <option value="Lenovo">Lenovo</option>
-          <option value="HP">HP</option>
+          <option value="Hp">HP</option>
+          <option value="all">Mostrar todo</option>
         </select>
       </LayoutFilter>
       <LayoutListProducts>
-        {filter.map((e, i) => (
-          <CardProduct key={i} product={e} />
-        ))}
+        <AppContext.Consumer>
+          {(context) => {
+            const { getFilterProducts } = context;
+            return getFilterProducts(filter) ? (
+              getFilterProducts(filter).map((e, i) => (
+                <CardProduct key={i} product={e} />
+              ))
+            ) : (
+              <h1>Cargando Productos</h1>
+            );
+          }}
+        </AppContext.Consumer>
       </LayoutListProducts>
     </>
   );
