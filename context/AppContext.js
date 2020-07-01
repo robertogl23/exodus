@@ -17,6 +17,12 @@ export class AppContextProvider extends Component {
 				return this.state.products.filter(e => e.proveedor.nombreProveedor === 'Apple')
 			case 'Lenovo':
 				return this.state.products.filter(e => e.proveedor.nombreProveedor === 'Lenovo')
+			case 'Dell':
+				return this.state.products.filter(e => e.proveedor.nombreProveedor === 'Dell')
+			case 'MSI':
+				return this.state.products.filter(e => e.proveedor.nombreProveedor === 'MSI')
+			case 'Acer':
+				return this.state.products.filter(e => e.proveedor.nombreProveedor === 'Acer')
 			
 			case 'all':
 				return this.state.products
