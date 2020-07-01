@@ -5,13 +5,13 @@ import ButtonAddCart from "./ButtonAddCart";
 import Feature from "./Feature";
 const LayoutSelect = styled.div`
   height: 450px;
-  width: 80%;
+  width: 100%;
   top: 56px;
   box-sizing: border-box;
   display: grid;
-  padding-right: 25em;
+  padding-right:480px;
   grid-template-columns: 25% 40% 35%;
-  grid-gap:20px;
+  grid-gap: 20px;
   @media (max-width: 967px) {
     padding: 0;
     width: 100%;
@@ -21,6 +21,7 @@ const LayoutSelect = styled.div`
 const ImageContainer = styled.div`
   box-sizing: border-box;
 
+
   width: 100%;
   height: 450px;
   display: flex;
@@ -29,8 +30,8 @@ const ImageContainer = styled.div`
 `;
 
 const LayoutDescription = styled.div`
-  box-sizing: border-box;
 
+  box-sizing: border-box;
   width: 400px;
   height: 450px;
 `;
@@ -43,6 +44,10 @@ const BarOpcions = styled.div`
   height: 60px;
   box-sizing: border-box;
   display: flex;
+  
+  @media (max-width: 967px) {
+    justify-content: space-around;
+  }
 `;
 const OpcionDes = styled.div`
   ${(props) => props.select && "border-bottom: 2px solid blue;"}
@@ -52,7 +57,7 @@ const OpcionDes = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor:pointer;
+  cursor: pointer;
 `;
 const OpcionCara = styled.div`
   ${(props) => !props.select && "border-bottom: 2px solid blue;"}
@@ -62,8 +67,7 @@ const OpcionCara = styled.div`
   display: flex;
   justify-content: center;
   align-items: center;
-  cursor:pointer;
-
+  cursor: pointer;
 `;
 export default function ProductSelected({ product }) {
   const [imagenes, setImagenes] = useState(product[0].urlImagenes[0]);

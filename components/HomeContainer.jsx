@@ -5,7 +5,6 @@ const LayoutHome = styled.div`
   display: flex;
   justify-content: center;
   padding-right: 25em;
-  border:1px solid red;
 
   height: 100vh !important;
   top: 56px;

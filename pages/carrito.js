@@ -14,11 +14,6 @@ const LayoutCar = styled.div`
   position: fixed;
   top: 80px;
   box-sizing: border-box;
-  transform: translateX(0px);
-  transition: transform 150ms ease-out 0s;
-  @media (max-width: 967px) {
-    transform: translateX(24.8767rem);
-  }
 `;
 const LayoutTitleCart = styled.div`
   border-bottom: 1px solid #dedede;
