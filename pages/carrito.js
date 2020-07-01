@@ -14,6 +14,10 @@ const LayoutCar = styled.div`
   position: fixed;
   top: 80px;
   box-sizing: border-box;
+  @media (max-width: 967px) {
+    width: 80%x;
+
+  }
 `;
 const LayoutTitleCart = styled.div`
   border-bottom: 1px solid #dedede;

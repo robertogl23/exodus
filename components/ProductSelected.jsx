@@ -47,6 +47,7 @@ const BarOpcions = styled.div`
   
   @media (max-width: 967px) {
     justify-content: space-around;
+    width: 100vh;
   }
 `;
 const OpcionDes = styled.div`
