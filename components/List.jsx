@@ -52,7 +52,9 @@ export default function List({ products }) {
           <option value="all">Filtrar marca</option>
           <option value="Apple">Apple</option>
           <option value="Lenovo">Lenovo</option>
-          <option value="Hp">HP</option>
+          <option value="Dell">Dell</option>
+          <option value="MSI">MSI</option>
+          <option value="Acer">Acer</option>
           <option value="all">Mostrar todo</option>
         </select>
       </LayoutFilter>
